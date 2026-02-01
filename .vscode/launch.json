@@ -1,0 +1,48 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "iBuddhism (debug - Chromium)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId": "chrome",
+      "env": {
+        "CHROME_EXECUTABLE": "/Applications/Chromium.app/Contents/MacOS/Chromium"
+      }
+    },
+    {
+      "name": "iBuddhism (debug - iOS)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId": "9C8C791B-FAB5-429F-8518-415257F48951"
+    },
+    {
+      "name": "iBuddhism (debug - iOS - Physical)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "deviceId": "00008140-001265D12640801C",
+      "env": {
+        "SDKROOT": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.2.sdk"
+      },
+      "toolArgs": [
+        "--device-timeout",
+        "30"
+      ]
+    },
+    {
+      "name": "iBuddhism (profile)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "iBuddhism (release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}

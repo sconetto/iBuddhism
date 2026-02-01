@@ -1,0 +1,6 @@
+flutter_launcher_icons:
+  ios: true
+  image_path_ios: "assets/icons/lotus-flower-padded.png"
+  image_path_ios_dark_transparent: "assets/icons/lotus-flower-padded-dark.png"
+  image_path_ios_tinted_grayscale: "assets/icons/lotus-flower-padded-transparent.png"
+  desaturate_tinted_to_grayscale_ios: true

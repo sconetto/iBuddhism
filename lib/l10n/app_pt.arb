@@ -1,0 +1,124 @@
+{
+  "appTitle": "iBuddhism",
+  "navHome": "Início",
+  "navGongyo": "Gongyo",
+  "navLibrary": "Biblioteca",
+  "navAbout": "Sobre",
+  "homeGreetingFormat": "Olá, {name}, {timeOfDay}!",
+  "@homeGreetingFormat": {
+    "placeholders": {
+      "name": {},
+      "timeOfDay": {}
+    }
+  },
+  "homeGreetingNoName": "Olá, {timeOfDay}!",
+  "homeGreetingLineOneWithName": "Olá, {name} 👋",
+  "@homeGreetingLineOneWithName": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "homeGreetingLineOneNoName": "Olá 👋",
+  "@homeGreetingNoName": {
+    "placeholders": {
+      "timeOfDay": {}
+    }
+  },
+  "homeTimeDay": "bom dia",
+  "homeTimeAfternoon": "boa tarde",
+  "homeTimeNight": "boa noite",
+  "homeSubhead": "Acesse textos de estudo e reflexão para acompanhar sua jornada.",
+  "homeCalendarTitle": "Gongyo",
+  "homeCalendarHeader": "Calendário de gongyo",
+  "homeCalendarProgressTitle": "Progresso mensal",
+  "homeCalendarToday": "Hoje",
+  "homeCalendarLegendEmpty": "Não iniciado",
+  "homeCalendarLegendStarted": "Iniciado",
+  "homeCalendarLegendCompleted": "Recitado",
+  "homeCalendarProgress": "{completed}/{total} dias recitados",
+  "@homeCalendarProgress": {
+    "placeholders": {
+      "completed": {},
+      "total": {}
+    }
+  },
+  "homeLocalContentTitle": "Conteúdo local",
+  "homeLocalContentBody": "Todo o conteúdo está salvo no dispositivo para leitura offline.",
+  "homeGreeting": "Olá, {name}",
+  "@homeGreeting": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "themeAuto": "Auto",
+  "themeLight": "Claro",
+  "themeDark": "Escuro",
+  "gongyoTitle": "Gongyo",
+  "gongyoSelectChaptersTitle": "Selecione os capítulos para recitar.",
+  "gongyoSelectChaptersHint": "É necessário manter pelo menos um capítulo selecionado.",
+  "gongyoHoben": "Hoben-pon",
+  "gongyoJuryo": "Juryo-hon",
+  "gongyoTempoLabel": "Tempo",
+  "gongyoTempoHelp": "Ajuste a velocidade com que o texto avança.",
+  "gongyoStart": "Iniciar",
+  "gongyoPause": "Pausar",
+  "gongyoResume": "Continuar",
+  "gongyoRestart": "Reiniciar",
+  "gongyoStop": "Parar",
+  "gongyoExit": "Sair",
+  "gongyoSectionDaimokuStartTitle": "Daimoku",
+  "gongyoSectionDaimokuStartDescription": "Recite Nam-myoho-renge-kyo três vezes.",
+  "gongyoSectionHobenTitle": "Hoben-pon (Cap. 2)",
+  "gongyoSectionHobenDescription": "Até o último “ma ku kyo to”.",
+  "gongyoSectionJuryoTitle": "Juryo-hon (Cap. 16)",
+  "gongyoSectionJuryoDescription": "O capítulo da “Duração da Vida do Tathagata”.",
+  "gongyoSectionDaimokuEndTitle": "Daimoku (Encerramento)",
+  "gongyoSectionDaimokuEndDescription": "Continue a recitar Nam-myoho-renge-kyo com foco no Gohonzon.",
+  "libraryTitle": "Biblioteca",
+  "resourceSource": "Fonte: {source}",
+  "@resourceSource": {
+    "placeholders": {
+      "source": {}
+    }
+  },
+  "settingsTitle": "Ajustes",
+  "settingsLanguageTitle": "Idioma",
+  "settingsLanguageDescription": "Escolha o idioma do app.",
+  "settingsLanguagePortuguese": "Português 🇧🇷",
+  "settingsLanguageEnglish": "Inglês 🇺🇸",
+  "settingsAboutTitle": "Sobre",
+  "settingsAboutBody": "iBuddhism é um companheiro minimalista para Gongyo e estudo.",
+  "settingsAction": "Ajustes",
+  "profileAction": "Perfil",
+  "settingsProfileTitle": "Perfil",
+  "settingsProfileNameLabel": "Seu nome",
+  "settingsProfileNameHint": "Digite seu nome",
+  "settingsProfileNameDescription": "Este nome fica salvo localmente no dispositivo.",
+  "settingsProfileBioLabel": "Bio",
+  "settingsProfileBioHint": "Compartilhe uma nota curta",
+  "settingsProfileAvatarTitle": "Cor do perfil",
+  "settingsProfileAvatarCamera": "Câmera",
+  "settingsProfileAvatarGallery": "Galeria",
+  "settingsProfileAvatarRemove": "Remover foto do perfil",
+  "settingsProfileDobLabel": "Data de nascimento",
+  "settingsProfileDobPick": "Selecionar data",
+  "settingsProfileAge": "{age} anos",
+  "@settingsProfileAge": {
+    "placeholders": {
+      "age": {}
+    }
+  },
+  "settingsProfileWeeklyGoalLabel": "Meta semanal",
+  "settingsGongyoGoalTitle": "Meta de gongyo",
+  "settingsProfileWeeklyGoalValue": "{count, plural, =1{{count} vez/semana} other{{count} vezes/semana}}",
+  "@settingsProfileWeeklyGoalValue": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "aboutTitle": "Sobre",
+  "aboutHeadline": "iBuddhism",
+  "aboutBody": "iBuddhism é um companheiro minimalista para Gongyo e estudo, criado para apoiar a prática diária com clareza e presença.",
+  "aboutAuthorTitle": "Autor",
+  "aboutAuthorBody": "Criado por João Pedro Sconetto e Mariana de Souza Mendes.\nFeito com ♥️ e ☕."
+}

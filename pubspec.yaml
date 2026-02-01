@@ -1,0 +1,40 @@
+name: ibuddhism
+description: A minimalist companion app for practitioners of Nichiren Daishonin Buddhism.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  liquid_glass_renderer: ^0.2.0-dev.4
+  shared_preferences: ^2.3.2
+  device_info_plus: ^11.3.0
+  image_picker: ^1.1.2
+  path_provider: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/app_icon_placeholder.txt
+    - assets/icons/lotus-flower-padded.png
+    - assets/icons/lotus-flower.png
+    - assets/fonts/
+  fonts:
+    - family: NotoSansSC
+      fonts:
+        - asset: assets/fonts/NotoSansSC-Regular.ttf
+
