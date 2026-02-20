@@ -39,27 +39,39 @@ chapter selection, and progress tracking.
 
 ## Local Development
 
+Initiate iOS Emulator (macOS only):
+
+```bash
+flutter emulators --launch apple_ios_simulator
+```
+
 Install dependencies:
 
-```
+```bash
 flutter pub get
 ```
 
 Generate localizations:
 
-```
+```bash
 flutter gen-l10n
 ```
 
 Run on a device or emulator:
 
-```
+```bash
 flutter run
+```
+
+Generate app icons:
+
+```bash
+dart run flutter_launcher_icons
 ```
 
 ## Tests
 
-```
+```bash
 flutter test
 ```
 
@@ -67,14 +79,14 @@ flutter test
 
 Android:
 
-```
+```bash
 flutter build apk
 flutter build appbundle
 ```
 
 iOS (requires Xcode on macOS):
 
-```
+```bash
 flutter build ios
 ```
 
