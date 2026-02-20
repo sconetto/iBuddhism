@@ -70,7 +70,7 @@ class GlassNavBar extends StatelessWidget {
                     final labelVisibility =
                         Curves.easeOutCubic.transform(rawT.clamp(0.0, 1.0));
                     final content = LiquidGlassLayer(
-                      fake: false,
+                      fake: true,
                       settings: LiquidGlassSettings(
                         thickness: 10,
                         blur: glass.blurSigma,
