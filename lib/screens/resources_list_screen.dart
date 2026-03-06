@@ -62,16 +62,20 @@ class _ResourcesListScreenState extends State<ResourcesListScreen> {
       ),
       body: Stack(
         children: [
-          ListView.separated(
-            controller: _scrollController,
-            padding: const EdgeInsets.only(bottom: 120),
-            itemCount: resourcesPt.length,
-            separatorBuilder: (_, __) => const Divider(height: 1),
-            itemBuilder: (context, index) {
-              final article = resourcesPt[index];
-              return _ResourceListTile(article: article);
-            },
-          ),
+          Builder(builder: (context) {
+            final sortedResources = List<ResourceArticle>.from(resourcesPt)
+              ..sort((a, b) => a.sequence.compareTo(b.sequence));
+            return ListView.separated(
+              controller: _scrollController,
+              padding: const EdgeInsets.only(bottom: 120),
+              itemCount: sortedResources.length,
+              separatorBuilder: (_, __) => const Divider(height: 1),
+              itemBuilder: (context, index) {
+                final article = sortedResources[index];
+                return _ResourceListTile(article: article);
+              },
+            );
+          }),
           Positioned(
             left: 0,
             right: 0,
