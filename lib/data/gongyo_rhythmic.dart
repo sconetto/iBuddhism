@@ -13,12 +13,14 @@ class GongyoSection {
     required this.title,
     required this.lines,
     this.description,
+    this.loop = 1,
   });
 
   final String id;
   final String title;
   final String? description;
   final List<GongyoLine> lines;
+  final int loop;
 }
 
 const List<GongyoSection> gongyoSections = [
@@ -26,6 +28,7 @@ const List<GongyoSection> gongyoSections = [
     id: 'daimoku_start',
     title: 'Daimoku',
     description: 'Recite Nam-myoho-renge-kyo três vezes.',
+    loop: 3,
     lines: [
       GongyoLine('Nam-myoho-renge-kyo'),
       GongyoLine('Nam-myoho-renge-kyo'),
