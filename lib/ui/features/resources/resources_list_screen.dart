@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:ibuddhism/l10n/app_localizations.dart';
 
-import '../data/resources_pt.dart';
-import '../models/resource_article.dart';
+import '../../core/widgets/glass_nav_bar.dart';
+import '../../../data/repositories/resource_repository.dart';
+import '../../../models/resource_article.dart';
+import '../app/app_view_model.dart';
+import '../gongyo/gongyo_screen.dart';
+import '../home/home_screen.dart';
 import 'resource_detail_screen.dart';
-import '../screens/gongyo_rhythmic_screen.dart';
-import '../screens/home_screen.dart';
-import '../widgets/glass_nav_bar.dart';
 
 class ResourcesListScreen extends StatefulWidget {
-  const ResourcesListScreen({super.key});
+  const ResourcesListScreen({
+    super.key,
+    required this.resourceRepository,
+    required this.appViewModel,
+  });
 
   static const routeName = '/resources';
+
+  final ResourceRepository resourceRepository;
+  final AppViewModel appViewModel;
 
   @override
   State<ResourcesListScreen> createState() => _ResourcesListScreenState();
@@ -63,7 +71,10 @@ class _ResourcesListScreenState extends State<ResourcesListScreen> {
       body: Stack(
         children: [
           Builder(builder: (context) {
-            final sortedResources = List<ResourceArticle>.from(resourcesPt)
+            final resources = widget.resourceRepository.getResources(
+              widget.appViewModel.locale,
+            );
+            final sortedResources = List<ResourceArticle>.from(resources)
               ..sort((a, b) => a.sequence.compareTo(b.sequence));
             return ListView.separated(
               controller: _scrollController,
@@ -72,7 +83,19 @@ class _ResourcesListScreenState extends State<ResourcesListScreen> {
               separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (context, index) {
                 final article = sortedResources[index];
-                return _ResourceListTile(article: article);
+                return ListTile(
+                  title: Text(article.title),
+                  subtitle: Text(article.subtitle),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ResourceDetailScreen(article: article),
+                      ),
+                    );
+                  },
+                );
               },
             );
           }),
@@ -96,7 +119,7 @@ class _ResourcesListScreenState extends State<ResourcesListScreen> {
               onGongyoTap: () {
                 Navigator.pushReplacementNamed(
                   context,
-                  GongyoRhythmicScreen.routeName,
+                  GongyoScreen.routeName,
                   arguments: const {'showControls': true},
                 );
               },
@@ -105,29 +128,6 @@ class _ResourcesListScreenState extends State<ResourcesListScreen> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _ResourceListTile extends StatelessWidget {
-  const _ResourceListTile({required this.article});
-
-  final ResourceArticle article;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(article.title),
-      subtitle: Text(article.subtitle),
-      trailing: const Icon(Icons.chevron_right),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => ResourceDetailScreen(article: article),
-          ),
-        );
-      },
     );
   }
 }

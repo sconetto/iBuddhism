@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ibuddhism/l10n/app_localizations.dart';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import '../theme/app_materials.dart';
 
@@ -69,8 +69,8 @@ class GlassNavBar extends StatelessWidget {
                             (fullWidth - collapsedWidth);
                     final labelVisibility =
                         Curves.easeOutCubic.transform(rawT.clamp(0.0, 1.0));
-                    final content = LiquidGlassLayer(
-                      fake: true,
+                    final content = GlassContainer(
+                      useOwnLayer: true,
                       settings: LiquidGlassSettings(
                         thickness: 10,
                         blur: glass.blurSigma,
@@ -78,83 +78,76 @@ class GlassNavBar extends StatelessWidget {
                         lightIntensity: 1.5,
                         saturation: 1.2,
                       ),
-                      child: LiquidGlassBlendGroup(
-                        blend: 18,
-                        child: LiquidGlass.grouped(
-                          shape: LiquidRoundedSuperellipse(
-                            borderRadius: glass.cornerRadius,
+                      shape: LiquidRoundedSuperellipse(
+                        borderRadius: glass.cornerRadius,
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(glass.cornerRadius),
+                          border: Border.all(
+                            color: colorScheme.outline
+                                .withValues(alpha: glass.borderAlpha),
                           ),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 10,
+                          boxShadow: [
+                            BoxShadow(
+                              color: colorScheme.shadow
+                                  .withValues(alpha: glass.shadowAlpha),
+                              blurRadius: 18,
+                              offset: const Offset(0, 8),
                             ),
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(glass.cornerRadius),
-                              border: Border.all(
-                                color: colorScheme.outline
-                                    .withValues(alpha: glass.borderAlpha),
+                          ],
+                        ),
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 200),
+                          switchInCurve: Curves.easeOutCubic,
+                          switchOutCurve: Curves.easeOutCubic,
+                          transitionBuilder: (child, animation) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: ScaleTransition(
+                                scale: Tween<double>(
+                                  begin: 0.98,
+                                  end: 1.0,
+                                ).animate(animation),
+                                child: child,
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: colorScheme.shadow
-                                      .withValues(alpha: glass.shadowAlpha),
-                                  blurRadius: 18,
-                                  offset: const Offset(0, 8),
-                                ),
-                              ],
-                            ),
-                            child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 200),
-                              switchInCurve: Curves.easeOutCubic,
-                              switchOutCurve: Curves.easeOutCubic,
-                              transitionBuilder: (child, animation) {
-                                return FadeTransition(
-                                  opacity: animation,
-                                  child: ScaleTransition(
-                                    scale: Tween<double>(
-                                      begin: 0.98,
-                                      end: 1.0,
-                                    ).animate(animation),
-                                    child: child,
+                            );
+                          },
+                          child: isCollapsed
+                              ? Center(
+                                  key: const ValueKey('collapsed'),
+                                  child: _buildTab(
+                                    tabs.first,
+                                    textTheme,
+                                    l10n,
+                                    0.0,
                                   ),
-                                );
-                              },
-                              child: isCollapsed
-                                  ? Center(
-                                      key: const ValueKey('collapsed'),
-                                      child: _buildTab(
-                                        tabs.first,
-                                        textTheme,
-                                        l10n,
-                                        0.0,
+                                )
+                              : Row(
+                                  key: const ValueKey('expanded'),
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    for (int i = 0; i < tabs.length; i++) ...[
+                                      Expanded(
+                                        child: _buildTab(
+                                          tabs[i],
+                                          textTheme,
+                                          l10n,
+                                          labelVisibility,
+                                        ),
                                       ),
-                                    )
-                                  : Row(
-                                      key: const ValueKey('expanded'),
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        for (int i = 0;
-                                            i < tabs.length;
-                                            i++) ...[
-                                          Expanded(
-                                            child: _buildTab(
-                                              tabs[i],
-                                              textTheme,
-                                              l10n,
-                                              labelVisibility,
-                                            ),
-                                          ),
-                                          if (i != tabs.length - 1)
-                                            const SizedBox(width: 10),
-                                        ],
-                                      ],
-                                    ),
-                            ),
-                          ),
+                                      if (i != tabs.length - 1)
+                                        const SizedBox(width: 10),
+                                    ],
+                                  ],
+                                ),
                         ),
                       ),
                     );
