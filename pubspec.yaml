@@ -9,16 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.9
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
-  liquid_glass_renderer: ^0.2.0-dev.4
-  flutter_markdown: ^0.7.4
-  shared_preferences: ^2.3.2
-  device_info_plus: ^12.3.0
-  image_picker: ^1.1.2
-  path_provider: ^2.1.4
+  liquid_glass_widgets: ^0.19.1
+  flutter_markdown_plus: ^1.0.7
+  shared_preferences: ^2.5.5
+  image_picker: ^1.2.2
+  path_provider: ^2.1.6
 
 dev_dependencies:
   flutter_test:
