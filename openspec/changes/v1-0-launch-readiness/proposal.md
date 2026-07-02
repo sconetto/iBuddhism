@@ -12,6 +12,7 @@ This change addresses all identified launch-blocking and high-priority improveme
 - Write unit tests for GongyoViewModel (chapter selection, loop logic, advance/stop/pause).
 - Write widget tests for key screens (Gongyo controls, Calendar, Settings profile form).
 - Update outdated dependencies (`liquid_glass_widgets`, `image_picker`).
+- Set up CI/CD via GitHub Actions to run analyze + test on push/PR and build on tag.
 - (Future change, scoped out here) Onboarding tutorial, daily reminders, backup/restore.
 
 ## Capabilities
@@ -23,6 +24,7 @@ This change addresses all identified launch-blocking and high-priority improveme
 - `test-coverage-gongyo-viewmodel`: Unit tests for GongyoViewModel logic (chapter toggle, interval, timer, loops, progress marking).
 - `test-coverage-widgets`: Widget tests for critical UI surfaces (Gongyo controls, Calendar, Settings profile).
 - `dependency-updates`: Bump outdated packages to latest compatible versions.
+- `ci-cd-setup`: GitHub Actions workflow that runs `flutter analyze` + `flutter test` on every push and PR, and builds the app on tag.
 
 ### Modified Capabilities
 *(No existing specs are being modified — all capabilities are new.)*
@@ -33,4 +35,5 @@ This change addresses all identified launch-blocking and high-priority improveme
 - **Gongyo screen**: GongyoViewModel needs a computed total-line-count and current position; UI needs a non-intrusive indicator.
 - **Gongyo control bar**: Stop action needs a confirmation dialog path.
 - **Tests**: New test files under `test/` covering ViewModel logic and widget rendering.
+- **CI/CD**: New `.github/workflows/` directory with Flutter CI workflow.
 - **pubspec.yaml**: Version bumps for `liquid_glass_widgets`.

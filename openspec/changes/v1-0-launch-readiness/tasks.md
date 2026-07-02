@@ -34,8 +34,15 @@
 - [ ] 5.3 Create `test/widgets/settings_profile_test.dart` — verify profile form fields render and accept input
 - [ ] 5.4 Run `flutter test` to confirm all widget tests pass
 
-## 6. Dependency Updates
+## 6. CI/CD Setup
 
-- [ ] 6.1 Run `flutter pub upgrade liquid_glass_widgets` and verify compatibility
-- [ ] 6.2 Run `flutter pub upgrade image_picker` and verify compatibility
-- [ ] 6.3 Run `flutter analyze` and `flutter test` to confirm no regressions
+- [ ] 6.1 Create `.github/workflows/flutter-ci.yml` with `check` job (analyze + test on push/PR)
+- [ ] 6.2 Add `build` job to the same workflow (trigger on tag)
+- [ ] 6.3 Push a test branch to verify workflow triggers and passes
+- [ ] 6.4 Add branch protection rule requiring CI to pass before merge (if repo owner)
+
+## 7. Dependency Updates
+
+- [ ] 7.1 Run `flutter pub upgrade liquid_glass_widgets` and verify compatibility
+- [ ] 7.2 Run `flutter pub upgrade image_picker` and verify compatibility
+- [ ] 7.3 Run `flutter analyze` and `flutter test` to confirm no regressions

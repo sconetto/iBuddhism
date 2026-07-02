@@ -13,6 +13,7 @@ The app uses `shared_preferences` for persistence, `liquid_glass_widgets` for th
 - Unit-test all GongyoViewModel logic deterministically.
 - Widget-test the critical user journeys (Gongyo playback, calendar navigation, Settings profile form).
 - Bump `liquid_glass_widgets` and `image_picker` to latest compatible versions.
+- Set up CI/CD pipeline that validates every push and PR.
 
 **Non-Goals:**
 - No onboarding tutorial (separate future change).
@@ -48,6 +49,13 @@ The app uses `shared_preferences` for persistence, `liquid_glass_widgets` for th
 - **Decision**: Use `SharedPreferences.setMockInitialValues({})` in test setup. Test GongyoViewModel in isolation (constructor, toggle, start, advance, pause, stop, reset). Widget tests via `WidgetTester` pumpWidget.
 - **Rationale**: `shared_preferences` is the only external dependency of the ViewModel. Mock initial values are simple and well-documented. No need for a DI framework at this scale.
 
+### 6. CI/CD: GitHub Actions with Flutter CI
+
+- **Context**: The pre-commit hooks (format, analyze, test) only run locally. GitHub has no CI to catch regressions on push or PR.
+- **Decision**: Single GitHub Actions workflow with two jobs — `check` (analyze + test on every push/PR) and `build` (on tag push).
+- **Rationale**: GitHub Actions is free for public repos, natively integrated, and has official Flutter setup actions. Two-job separation keeps fast checks from waiting on builds.
+- **Alternative considered**: Codemagic — more powerful but overkill for this project's size.
+
 ### 5. Dependency Updates: Semver-compatible bumps
 
 - **Context**: `pubspec.yaml` lists `liquid_glass_widgets: ^1.0.0` and `image_picker: ^0.8.9`.
@@ -56,6 +64,8 @@ The app uses `shared_preferences` for persistence, `liquid_glass_widgets` for th
 
 ## Risks / Trade-offs
 
+- **[CI runtime]**: Flutter CI takes 3-5 minutes per run, which can slow down PR iteration.
+  - **Mitigation**: The `check` job is fast (no build artifacts); slow builds only trigger on tags.
 - **[Font size]**: NotoSansSC `.ttf` is ~5 MB, increasing app download size. For a utility app this is acceptable, but worth noting for users on limited data plans.
   - **Mitigation**: Use `NotoSansSC` static weight (not variable) and subset to CJK ideographs only.
 - **[Gongyo totalLines]**: The current line highlighting logic in `GongyoViewModel` indexes into a flat list of verses. If the line-count formula changes, the progress calculation must stay in sync.
