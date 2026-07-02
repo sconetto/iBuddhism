@@ -48,3 +48,8 @@ app.*.map.json
 /android/local.properties
 /ios/Pods/
 /macos/Pods/
+
+# Tooling / Agent config
+.agent/
+.omo/
+.opencode/
